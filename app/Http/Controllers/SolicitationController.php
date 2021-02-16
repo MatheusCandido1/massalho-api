@@ -4,82 +4,40 @@ namespace App\Http\Controllers;
 
 use App\Models\Solicitation;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class SolicitationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function createSolicitation(Request $request) {
+        $solicitation = Solicitation::create([
+            'code' => $request->code,
+            'ready_date' => Carbon::parse($request->dueDate),
+            'status' => 0
+        ]);
+
+        if($solicitation) {
+            return response()->json([
+                'solicitation' => $solicitation,
+                'success_message' => 'Solicitação criada!'
+            ], 201);
+        } else {
+            return response()->json([
+                'error_message' => 'Erro'
+            ], 400);
+        }
+
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function getSolicitations() {
+        $solicitation = Solicitation::paginate(4);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Solicitation  $solicitation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Solicitation $solicitation)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Solicitation  $solicitation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Solicitation $solicitation)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Solicitation  $solicitation
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Solicitation $solicitation)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Solicitation  $solicitation
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Solicitation $solicitation)
-    {
-        //
+        return response()->json([
+            'solicitations' => $solicitation
+        ], 200);
     }
 }
