@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Measure extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'name', 'initials'
+    ];
+
+    public function product()
+    {
+        return $this->hasMany('App\Product');
+    }
 }
