@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Measure;
 
 class MeasureSeeder extends Seeder
 {
@@ -13,6 +14,9 @@ class MeasureSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Measure::insert([
+            ['name' => 'grama','initials' => 'g'],
+            ['name' => 'milílitro','initials' => 'ml']
+        ]);
     }
 }
