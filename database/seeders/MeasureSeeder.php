@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Measure;
+use App\Models\Measure;
 
 class MeasureSeeder extends Seeder
 {
