@@ -6,12 +6,23 @@ use App\Http\Controllers\SolicitationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
 
-Route::post('/auth/login', [AuthController::class, 'login']);
-Route::post('/auth/logout', [AuthController::class, 'logout']);
-Route::post('/auth/refresh', [AuthController::class, 'refresh']);
+Route::group(['prefix' => 'v1'], function() {
+Route::get('/unauthorized', [AuthController::class, 'unauthorized'])->name('login');
+
+// Authentication
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+});
+
 Route::post('/register', [AuthController::class, 'register']);
 
+// Solicitations
 Route::get('/solicitations', [SolicitationController::class,  'getSolicitations']);
 Route::post('/solicitations', [SolicitationController::class,  'createSolicitation']);
 
+// Orders
 Route::get('/orders/solicitation/{id}', [OrderController::class,  'getOrders']);
+
+});
