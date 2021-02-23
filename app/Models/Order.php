@@ -19,7 +19,7 @@ class Order extends Model
 
     public function product()
     {
-        return $this->belongsTo('App\Product');
+        return $this->belongsTo('App\Models\Product');
     }
 
     public function getProductIdNameAttribute() {
@@ -28,6 +28,6 @@ class Order extends Model
 
     public function solicitation()
     {
-        return $this->belongsToMany('App\Solicitation', 'solicitations_orders', 'order_id', 'solicitation_id')->withTimestamps();;
+        return $this->belongsToMany('App\Models\Solicitation', 'solicitations_orders', 'order_id', 'solicitation_id')->withTimestamps();
     }
 }

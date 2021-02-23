@@ -15,7 +15,7 @@ class Product extends Model
 
     public function type()
     {
-        return $this->belongsTo('App\Type');
+        return $this->belongsTo('App\Models\Type');
     }
 
     public function getTypeIdNameAttribute() {
@@ -28,12 +28,12 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->hasMany('App\Order');
+        return $this->hasMany('App\Models\Order');
     }
     
 
     public function measure()
     {
-        return $this->belongsTo('App\Measure');
+        return $this->belongsTo('App\Models\Measure');
     }
 }

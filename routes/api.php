@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SolicitationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 
 Route::group(['prefix' => 'v1'], function() {
 Route::get('/unauthorized', [AuthController::class, 'unauthorized'])->name('login');
@@ -24,5 +25,8 @@ Route::post('/solicitations', [SolicitationController::class,  'createSolicitati
 
 // Orders
 Route::get('/orders/solicitation/{id}', [OrderController::class,  'getOrders']);
+
+// Products
+Route::get('/products', [ProductController::class, 'getProducts']);
 
 });
