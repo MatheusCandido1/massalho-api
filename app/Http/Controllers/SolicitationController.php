@@ -29,8 +29,6 @@ class SolicitationController extends Controller
                 'error_message' => 'Erro'
             ], 400);
         }
-
-        
     }
 
     public function getSolicitations() {

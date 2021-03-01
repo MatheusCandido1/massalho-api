@@ -23,6 +23,9 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/solicitations', [SolicitationController::class,  'getSolicitations']);
 Route::post('/solicitations', [SolicitationController::class,  'createSolicitation']);
 
+
+Route::post('/orders', [OrderController::class,  'createOrder']);
+
 // Orders
 Route::get('/orders/solicitation/{id}', [OrderController::class,  'getOrders']);
 
