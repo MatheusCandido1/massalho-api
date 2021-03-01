@@ -8,12 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $fillable = [
-        'ready_date', 'quantity', 'user_id', 'product_id', 'status'
+        'quantity', 'user_id', 'product_id', 'status'
     ];
 
-    protected $casts = [
-        'ready_date'  => 'date:d/m/Y - H:m',
-    ];
 
     protected $appends = ['product_id_name'];
 
