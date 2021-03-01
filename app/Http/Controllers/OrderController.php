@@ -26,7 +26,6 @@ class OrderController extends Controller
 
     public function createOrder(Request $request) {
         $order = Order::create([
-            'ready_date' => $request->ready_date,
             'quantity' => $request->quantity,
             'status' => 0,
             'user_id' => 1,
