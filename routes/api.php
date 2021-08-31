@@ -17,7 +17,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
 });
 
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/account', [AuthController::class, 'register']);
 
 // Solicitations
 Route::get('/solicitations', [SolicitationController::class,  'getSolicitations']);
